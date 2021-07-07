@@ -9,13 +9,30 @@ import { Button } from '../components/Button';
 import { useAuth } from '../hooks/UseAuth';
 
 import '../styles/auth.scss';
+
 import { database } from '../services/firebase';
+
+
+import { Toggle } from "../components/Toggle";
+import { useDarkMode } from "../styles/darkMode/useDarkMode";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/darkMode/theme";
+import styled, { ThemeProvider } from 'styled-components';
 
 export function NewRoom() {
     const { user } = useAuth();
     const history  = useHistory();
     
     const [newRoom, setNewRoom] = useState('');
+
+
+    const Container = styled.div`
+        max-width: 50%;
+        margin: 8rem auto 0;
+    `;
+
+    const [theme, toggleTheme] = useDarkMode();
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
+
 
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
@@ -43,6 +60,14 @@ export function NewRoom() {
             <main>
                 <div className="main-content">
                     <img src={logoImg} alt="Imagem simbolizando uma logo da aplicação Letmeask" />
+                    <div id="theme-dark">
+                        <ThemeProvider theme={themeMode}>
+                            <Container>
+                                <GlobalStyles />
+                                <Toggle theme={theme} toggleTheme={toggleTheme} />
+                            </Container>
+                        </ThemeProvider>
+                    </div>
                     <h2>Criar uma nova sala</h2>
                     <form onSubmit={ handleCreateRoom }>
                         <input

@@ -11,8 +11,12 @@ import { useRoom } from '../hooks/useRoom';
 import { database } from '../services/firebase';
 
 
+import { useDarkMode } from "../styles/darkMode/useDarkMode";
+import { GlobalStyles, lightTheme, darkTheme } from "../styles/darkMode/theme";
+import styled, { ThemeProvider } from 'styled-components';
 
 import '../styles/room.scss';
+import { Toggle } from '../components/Toggle';
 
 
 type RoomParams = {
@@ -30,6 +34,14 @@ export function Room() {
 
     const { title, questions } = useRoom(roomId);
 
+
+    const Container = styled.div`
+        max-width: 50%;
+        margin: 8rem auto 0;
+    `;
+
+    const [theme, toggleTheme] = useDarkMode();
+    const themeMode = theme === 'light' ? lightTheme : darkTheme;
 
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
@@ -77,6 +89,14 @@ export function Room() {
                 </div>
             </header>
             <main className="content">
+                <div id="theme-dark">
+                    <ThemeProvider theme={themeMode}>
+                        <Container>
+                            <GlobalStyles />
+                            <Toggle theme={theme} toggleTheme={toggleTheme} />
+                        </Container>
+                    </ThemeProvider>
+                </div>
                 <div className="room-title">
                     <h1>Sala {title}</h1>
                     {questions.length > 0 && <span>{questions.length} pergunta(s)</span>}

@@ -71,7 +71,7 @@ export function Home() {
             <main>
                 <div className="main-content">
                     <img src={logoImg} alt="Imagem simbolizando uma logo da aplicação Letmeask" />
-                    <div>
+                    <div id="theme-dark">
                         <ThemeProvider theme={themeMode}>
                             <Container>
                                 <GlobalStyles />
