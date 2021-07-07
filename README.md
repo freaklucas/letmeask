@@ -2,12 +2,6 @@
   <img alt="Letmeask" src=".github/logo.svg" width="160px">
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=NLW&message=06&color=8257E5&labelColor=000000" alt="NLW Together 06" />
-  
-  <img src="https://img.shields.io/github/stars/rocketseat-education/nlw-06-reactjs?label=stars&message=MIT&color=8257E5&labelColor=000000" alt="Stars">
-</p>
-
 <h1 align="center">
     <img alt="Letmeask" src=".github/cover.svg" />
     <img src=".github/1.png" />
@@ -31,8 +25,8 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 Clone o projeto e acesse a pasta do mesmo.
 
 ```bash
-$ git clone https://github.com/rocketseat-education/nlw-06-reactjs
-$ cd nlw-06-reactjs
+$ git clone https://github.com/freaklucas/letmeask.git
+$ cd letmeask
 ```
 
 Para iniciá-lo, siga os passos abaixo:
